@@ -1,19 +1,19 @@
 pipeline {
-    agent any
-    tools{
+    agent { label 'linux'}
+    tools {
         maven '3.8.1'
     }
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
-                mvn clean install
+                sh 'mvn clean install'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-                mvn clean test
+                sh 'mvn clean test'
             }
         }
         stage('Deploy') {
